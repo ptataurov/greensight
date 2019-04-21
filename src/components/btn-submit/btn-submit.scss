@@ -1,0 +1,22 @@
+.btn-submit {
+  padding: 20px 60px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #212bff;
+  border: none;
+  border-radius: 28px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2029ea;
+  }
+
+  &:active {
+    background-color: #1e26d8;
+  }
+
+  &:disabled {
+    color: #b8bed8;
+    background-color: #edeeef;
+  }
+}

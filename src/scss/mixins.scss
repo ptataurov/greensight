@@ -1,0 +1,17 @@
+@import './vars.scss';
+
+@mixin importFonts($weight) {
+  @font-face {
+    font-weight: $weight;
+    font-family: 'Montserrat';
+    font-display: swap;
+    font-style: normal;
+    @content;
+  }
+}
+
+@mixin mq-sm {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}

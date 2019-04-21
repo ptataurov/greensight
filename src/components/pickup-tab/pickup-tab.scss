@@ -1,0 +1,87 @@
+@import '../../scss/mixins.scss';
+
+.pickup-tab__row {
+  display: flex;
+  margin-bottom: 40px;
+
+  @include mq-sm {
+    flex-direction: column;
+  }
+}
+
+.pickup-tab__check {
+  flex-basis: 50%;
+
+  @include mq-sm {
+    &:not(:last-of-type) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.pickup-tab__check-input {
+  display: none;
+
+  &:checked + .pickup-tab__check-label {
+    &:after {
+      position: absolute;
+      left: 7.5px;
+      display: block;
+      width: 6px;
+      height: 6px;
+      background-color: #212bff;
+      border-radius: 50%;
+      content: '';
+    }
+  }
+
+  &:disabled + .pickup-tab__check-label {
+    color: #b8bed8;
+
+    &:before {
+      background-color: #edeeef;
+      border: none;
+    }
+  }
+}
+
+.pickup-tab__check-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:before {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border: 1px solid #dbdff0;
+    border-radius: 50%;
+    content: '';
+  }
+
+  &:hover {
+    color: #212bff;
+
+    &:before {
+      border: 1px solid #212bff;
+    }
+  }
+}
+
+.pickup-tab__check-label-text {
+  flex: 1;
+}
+
+.pickup-tab__footer {
+  display: flex;
+}
+
+//mixes
+
+.pickup-tab__btn-submit {
+  margin-top: 38px;
+  margin-left: auto;
+}

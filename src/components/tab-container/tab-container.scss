@@ -1,0 +1,138 @@
+@import '../../scss/mixins.scss';
+
+.tab-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include mq-sm {
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid #dadef0;
+  }
+}
+
+.tab-container__btn {
+  position: relative;
+  padding: 24px 32px;
+  padding-right: 24px;
+  color: #8288a2;
+  font-size: 14px;
+  background-color: #edeeef;
+  border: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  cursor: pointer;
+
+  @include mq-sm {
+    flex: 1;
+    padding-right: 32px;
+    text-align: left;
+    background-color: #fff;
+    border-top: 1px solid #dadef0;
+    border-radius: 0;
+  }
+
+  &:not(:last-of-type) {
+    margin-right: 4px;
+
+    @include mq-sm {
+      margin-right: 0;
+    }
+  }
+
+  &:after {
+    position: absolute;
+    top: 0;
+    right: -18px;
+    width: 40px;
+    height: 100%;
+    background-color: #edeeef;
+    border-top-right-radius: 8px;
+    box-shadow: 2px 2px 0 #dbdcdd;
+    transform: skew(28deg);
+    content: '';
+
+    @include mq-sm {
+      display: none;
+    }
+  }
+
+  &--active {
+    z-index: 10;
+    color: #212bff;
+    background: #fff;
+
+    &:after {
+      background: #fff;
+      content: '';
+    }
+  }
+
+  &:hover {
+    color: #212bff;
+  }
+}
+
+.tab-container__tab {
+  z-index: 20;
+  display: none;
+  flex-basis: 100%;
+
+  padding: 38px 32px;
+  overflow: hidden;
+  background-color: #fff;
+
+  &--show {
+    display: block;
+  }
+
+  @include mq-sm {
+    width: 100%;
+    border-top: 1px solid #dadef0;
+  }
+}
+
+.tab-container__arrow {
+  &-group {
+    display: none;
+    float: right;
+
+    @include mq-sm {
+      display: inline;
+
+      .tab-container__arrow-down {
+        display: inline-block;
+      }
+
+      &--show {
+        .tab-container__arrow-up {
+          display: inline-block;
+        }
+        .tab-container__arrow-down {
+          display: none;
+        }
+      }
+    }
+  }
+  &-up,
+  &-down {
+    display: none;
+    padding: 2px;
+    border: solid;
+    border-width: 0 2px 2px 0;
+
+    &--show {
+      display: inline-block;
+    }
+  }
+
+  &-up {
+    border-color: #212bff;
+    transform: rotate(-135deg);
+  }
+
+  &-down {
+    border-color: #8288a2;
+    transform: rotate(45deg);
+  }
+}

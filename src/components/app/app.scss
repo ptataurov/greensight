@@ -1,0 +1,27 @@
+@import '../../scss/mixins.scss';
+
+.app {
+  min-width: 320px;
+  max-width: 996px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @include mq-sm {
+    margin: 0 16px;
+  }
+}
+
+.app__title {
+  margin: 50px 0 40px;
+  font-size: 32px;
+
+  @include mq-sm {
+    font-size: 24px;
+  }
+}
+
+// mixes
+
+.app__tab-container {
+  margin-bottom: 120px;
+}
