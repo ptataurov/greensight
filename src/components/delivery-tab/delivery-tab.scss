@@ -48,6 +48,7 @@
   border: 1px solid #dadef0;
   border-radius: 4px;
   outline: none;
+  box-shadow: none;
 
   &--invalid + .delivery-form__error-msg {
     display: inline;

@@ -66,9 +66,7 @@ class DeliveryTab extends Component {
     e.preventDefault()
     const { validationForm, resetForm } = this
 
-    if (!validationForm()) {
-      resetForm()
-    }
+    !validationForm() && resetForm()
   }
 
   handleChange = (e, field) => {
@@ -87,6 +85,27 @@ class DeliveryTab extends Component {
       commentRef
     } = this
     const { fullName, phone, address, comment } = this.state
+
+    const phoneMask = [
+      '+',
+      '7',
+      ' ',
+      '(',
+      /[1-9]/,
+      /\d/,
+      /\d/,
+      ')',
+      ' ',
+      /\d/,
+      /\d/,
+      /\d/,
+      '-',
+      /\d/,
+      /\d/,
+      '-',
+      /\d/,
+      /\d/
+    ]
 
     return (
       <form className="delivery-form" onSubmit={onSubmit} noValidate>
@@ -108,26 +127,7 @@ class DeliveryTab extends Component {
           <div className="delivery-form__group ml-8px ml-sm-0">
             <label className="delivery-form__label">Телефон</label>
             <MaskedInput
-              mask={[
-                '+',
-                '7',
-                ' ',
-                '(',
-                /[1-9]/,
-                /\d/,
-                /\d/,
-                ')',
-                ' ',
-                /\d/,
-                /\d/,
-                /\d/,
-                '-',
-                /\d/,
-                /\d/,
-                '-',
-                /\d/,
-                /\d/
-              ]}
+              mask={phoneMask}
               className="delivery-form__input"
               value={phone}
               onChange={e => handleChange(e, 'phone')}

@@ -7,7 +7,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 
 const optimization = {
-  minimizer: [new UglifyJsPlugin()]
+  minimizer: [
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        output: {
+          comments: false
+        }
+      }
+    })
+  ]
 }
 
 const config = {
@@ -28,11 +36,16 @@ const config = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          {
+          !isDev && {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: [require('autoprefixer')(), require('cssnano')()]
+              plugins: [
+                require('autoprefixer')(),
+                require('cssnano')({
+                  discardComments: { removeAll: true }
+                })
+              ]
             }
           },
           'sass-loader'
@@ -69,10 +82,7 @@ const config = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: [
-              ['module:fast-async', { spec: true }],
-              '@babel/plugin-proposal-class-properties'
-            ]
+            plugins: ['@babel/plugin-proposal-class-properties']
           }
         }
       },
